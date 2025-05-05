@@ -2,8 +2,16 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+
 lsp.ensure_installed({
-  'rust_analyzer',
+  'rust_analyzer',     -- Rust language server
+  'html',              -- HTML language server
+  'gopls',             -- Go language server
+  'clangd',            -- C/C++ language server
+  'cssls',             -- CSS language server
+  'pyright',           -- Python language server
+  'bashls',            -- Bash (batch) language server
+  'lua_ls',       -- Lua language server
 })
 
 -- Fix Undefined global 'vim'
@@ -64,3 +72,20 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+local lspconfig = require("lspconfig")
+
+lspconfig.emmet_ls.setup({
+  cmd = { "emmet-ls", "--stdio" },
+  filetypes = {
+    "html", "css", "scss", "javascriptreact", "typescriptreact", "vue", "svelte",
+  },
+  init_options = {
+    html = {
+      options = {
+        ["bem.enabled"] = true,
+      },
+    },
+  },
+})
+

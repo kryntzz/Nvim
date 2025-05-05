@@ -1,7 +1,6 @@
 require("usr.remap")
 require("usr.set")
 
-
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd('TextYankPost', {

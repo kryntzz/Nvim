@@ -4,17 +4,17 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+   'nvim-telescope/telescope.nvim', tag = '0.1.8',
+   -- or                            , branch = '0.1.x',
+   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   use({
-	  "rose-pine/neovim",
-	  as = "rose-pine",
-	  config = function()
-		  vim.cmd("colorscheme rose-pine")
-	  end
+   "rose-pine/neovim",
+   as = "rose-pine",
+   config = function()
+    vim.cmd("colorscheme rose-pine")
+   end
   })
 
   use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -24,6 +24,8 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
 
   use('tpope/vim-fugitive')
+
+  use("folke/zen-mode.nvim")
 
   use {
       'VonHeikemen/lsp-zero.nvim',
@@ -47,13 +49,22 @@ return require('packer').startup(function(use)
           {'rafamadriz/friendly-snippets'},
       }
   }
-      use("folke/zen-mode.nvim")
-      use {
-          "windwp/nvim-autopairs",
-          event = "InsertEnter",
-          config = function()
-              require("nvim-autopairs").setup {}
-          end
-      }
+
+
+  use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function()
+          require("nvim-autopairs").setup {}
+      end
+  }
+  use("ThePrimeagen/vim-be-good")
+  use ("UtkarshVerma/molokai.nvim")
+  use {
+      "windwp/nvim-ts-autotag",
+      config = function()
+          require("nvim-ts-autotag").setup()
+      end
+  }
 end)
 
